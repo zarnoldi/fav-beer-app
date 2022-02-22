@@ -2,7 +2,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import "./Beers.css";
 
 const Beers = (props) => {
-  console.log(props.beers.id);
+  console.log(props);
+
+  props.beers.forEach((beer) => {
+    console.log(beer.name);
+  });
 
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
@@ -29,13 +33,13 @@ const Beers = (props) => {
   return (
     <>
       <div className="containercc">
-        <DataGrid
+        {/* <DataGrid
           rows={rows}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
           checkboxSelection
-        />
+        /> */}
       </div>
     </>
   );
