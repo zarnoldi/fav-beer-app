@@ -1,37 +1,43 @@
-import Beer from "./Beer";
+import { DataGrid } from "@mui/x-data-grid";
 import "./Beers.css";
 
 const Beers = (props) => {
+  const columns = [
+    { field: "id", headerName: "ID", width: 100 },
+    { field: "name", headerName: "Name", width: 250 },
+    { field: "first_brewed", headerName: "First Brewed", width: 200 },
+    { field: "food_pairing", headerName: "Food pairings", width: 600 },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 600,
+    },
+  ];
   let rows = [];
 
+  // I need to remove
   props.beers.forEach((beer) => {
-    let beerRow = {
+    beer = {
       id: beer.id,
       name: beer.name,
       first_brewed: beer.first_brewed,
       food_pairing: beer.food_pairing,
       description: beer.description,
     };
-
-    rows = rows.push(beerRow);
+    rows.push(beer);
   });
-  console.log(props.beers);
+
   return (
     <>
-      {props.beers.forEach((beer) => {
-        return (
-          <div className="red" key={beer}>
-            <h2>Beer</h2>
-            <Beer
-              id={beer.id}
-              name={beer.name}
-              first_brewed={beer.first_brewed}
-              food_pairing={beer.food_pairing}
-              description={beer.description}
-            />
-          </div>
-        );
-      })}
+      <div className="containercc">
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+        />
+      </div>
     </>
   );
 };
