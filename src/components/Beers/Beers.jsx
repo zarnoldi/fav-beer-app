@@ -1,46 +1,37 @@
-import { DataGrid } from "@mui/x-data-grid";
+import Beer from "./Beer";
 import "./Beers.css";
 
 const Beers = (props) => {
-  console.log(props);
+  let rows = [];
 
   props.beers.forEach((beer) => {
-    console.log(beer.name);
+    let beerRow = {
+      id: beer.id,
+      name: beer.name,
+      first_brewed: beer.first_brewed,
+      food_pairing: beer.food_pairing,
+      description: beer.description,
+    };
+
+    rows = rows.push(beerRow);
   });
-
-  const columns = [
-    { field: "id", headerName: "ID", width: 100 },
-    { field: "name", headerName: "Name", width: 250 },
-    { field: "first_brewed", headerName: "First Brewed", width: 200 },
-    { field: "food_pairing", headerName: "Food pairings", width: 600 },
-    {
-      field: "description",
-      headerName: "Description",
-      width: 600,
-    },
-  ];
-
-  const rows = [
-    {
-      id: props.beers.id,
-      name: props.beers.name,
-      first_brewed: props.beers.first_brewed,
-      food_pairing: props.beers.food_pairing,
-      description: props.beers.description,
-    },
-  ];
-
+  console.log(props.beers);
   return (
     <>
-      <div className="containercc">
-        {/* <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-        /> */}
-      </div>
+      {props.beers.forEach((beer) => {
+        return (
+          <div className="red" key={beer}>
+            <h2>Beer</h2>
+            <Beer
+              id={beer.id}
+              name={beer.name}
+              first_brewed={beer.first_brewed}
+              food_pairing={beer.food_pairing}
+              description={beer.description}
+            />
+          </div>
+        );
+      })}
     </>
   );
 };

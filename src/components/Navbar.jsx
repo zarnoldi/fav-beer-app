@@ -1,4 +1,3 @@
-import Search from "./Search";
 import "./Navbar.css";
 // import { useState } from "react";
 
@@ -18,7 +17,6 @@ const Navbar = () => {
         <div>
           <h1>My Favorite Beers</h1>
         </div>
-        <Search />
       </div>
     </>
   );
