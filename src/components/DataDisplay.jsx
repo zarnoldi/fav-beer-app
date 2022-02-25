@@ -13,15 +13,25 @@ const DataDisplay = () => {
     },
   ];
 
+  let rows = [
+    {
+      id: props.beers.id,
+      name: props.beers.name,
+      first_brewed: props.beers.first_brewed,
+      food_pairing: props.beers.food_pairing,
+      description: props.beers.description,
+    },
+  ];
+
   return (
     <>
-      {/* <DataGrid
+      <DataGrid
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
-      /> */}
+      />
     </>
   );
 };

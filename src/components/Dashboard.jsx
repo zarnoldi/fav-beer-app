@@ -10,7 +10,6 @@ const Dashboard = () => {
       <div className="container">
         <Options />
       </div>
-
       <Beers beers={beerData.beers} />
     </>
   );

@@ -15,7 +15,6 @@ const Beers = (props) => {
   ];
   let rows = [];
 
-  // I need to remove
   props.beers.forEach((beer) => {
     beer = {
       id: beer.id,
@@ -27,6 +26,16 @@ const Beers = (props) => {
     rows.push(beer);
   });
 
+  const moreInfo = (idMoreInfo) => {
+    props.beers.forEach((beer) => {
+      let id = beer.id;
+
+      if (id === idMoreInfo) {
+        console.log(beer.description, beer.image_url);
+      }
+    });
+  };
+
   return (
     <>
       <div className="containercc">
@@ -35,7 +44,10 @@ const Beers = (props) => {
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
+          api
+          onCellDoubleClick={(e) => {
+            moreInfo(e.id);
+          }}
         />
       </div>
     </>
