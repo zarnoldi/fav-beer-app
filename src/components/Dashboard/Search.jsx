@@ -22,7 +22,6 @@ const Search = () => {
 
   const getInput = (e) => {
     food = e.target.value;
-    console.log(food);
   };
 
   return (

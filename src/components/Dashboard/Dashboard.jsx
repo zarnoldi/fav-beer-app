@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Beers from "./Beers/Beers";
+import Beers from "../Beers/Beers";
 import Options from "./Options";
 
 const Dashboard = () => {
