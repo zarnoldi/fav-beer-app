@@ -1,7 +1,10 @@
 import { DataGrid } from "@mui/x-data-grid";
+import { useDispatch } from "react-redux";
 import "./Beers.css";
 
 const Beers = (props) => {
+  const dispatch = useDispatch();
+
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "name", headerName: "Name", width: 250 },
@@ -31,7 +34,12 @@ const Beers = (props) => {
       let id = beer.id;
 
       if (id === idMoreInfo) {
-        console.log(beer.description, beer.image_url);
+        const moreInfoData = {
+          description: beer.description,
+          image_url: beer.image_url,
+        };
+
+        dispatch({ type: "MORE_INFO_MODAL", payload: moreInfoData });
       }
     });
   };
