@@ -11,7 +11,7 @@ const beerDataReducer = (state = intialState, action) => {
     case "ADD":
       return { ...state, beers: [...state.beers, action.payload] };
 
-    case "ClEAR":
+    case "CLEAR":
       console.log("Store Cleared");
       return { ...state, beers: [] };
 

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
 const MoreInfo = (props) => {
-  // Add useEffect
-  console.log(props);
   const [description, setDescription] = useState();
   const [image_url, setImage_url] = useState();
   const [isDisplaying, setDisplay] = useState(false);
@@ -12,8 +10,8 @@ const MoreInfo = (props) => {
   useEffect(() => {
     moreInfo.forEach((data) => {
       if (data) {
+        setDisplay(true);
         setDescription(data.description);
-        console.log(data.description);
         setImage_url(data.image_url);
       }
     });
@@ -23,7 +21,11 @@ const MoreInfo = (props) => {
   return (
     <>
       <div>
-        {moreInfo ? <p>{description}</p> : <p>Double Click for more Info</p>}
+        {isDisplaying ? (
+          <p>{description}</p>
+        ) : (
+          <p>Double Click for more Info</p>
+        )}
       </div>
     </>
   );

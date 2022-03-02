@@ -49,7 +49,6 @@ const Beers = (props) => {
 
         // Dispatch Data to the store
         dispatch({ type: "MORE_INFO_MODAL", payload: moreInfoData });
-        console.log("object");
       }
     });
   };
