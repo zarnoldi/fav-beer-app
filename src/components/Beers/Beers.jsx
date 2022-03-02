@@ -1,6 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch } from "react-redux";
-import SimpleDialog from "@mui/material/Dialog";
 import "./Beers.css";
 
 const Beers = (props) => {
@@ -35,6 +34,10 @@ const Beers = (props) => {
 
   // Dispatch beer data from selected row to store
   const moreInfo = (idMoreInfo) => {
+    // Clear store of any MoreInfo Data
+    dispatch({ type: "MORE_INFO_MODAL" });
+
+    // Find data for beer with correct ID
     props.beers.forEach((beer) => {
       let id = beer.id;
 
@@ -44,19 +47,12 @@ const Beers = (props) => {
           image_url: beer.image_url,
         };
 
+        // Dispatch Data to the store
         dispatch({ type: "MORE_INFO_MODAL", payload: moreInfoData });
         console.log("object");
-
-        open();
       }
     });
   };
-
-  const promptMoreInfo = (e) => {
-    console.log("Messages");
-  };
-
-  //
 
   return (
     <>
@@ -71,21 +67,6 @@ const Beers = (props) => {
             moreInfo(e.id);
           }}
         />
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Modal>
       </div>
     </>
   );

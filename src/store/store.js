@@ -11,8 +11,18 @@ const beerDataReducer = (state = intialState, action) => {
     case "ADD":
       return { ...state, beers: [...state.beers, action.payload] };
 
+    case "ClEAR":
+      console.log("Store Cleared");
+      return { ...state, beers: [] };
+
     case "MORE_INFO_MODAL":
-      return { ...state, moreInfoData: [...state.beers, action.payload] };
+      return {
+        ...state,
+        moreInfoData: [...state.moreInfoData, action.payload],
+      };
+
+    case "CLEAR_MORE_INFO_MODAL":
+      return { ...state, moreInfoData: [] };
 
     default:
       return state;

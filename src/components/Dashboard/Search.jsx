@@ -3,17 +3,21 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Search = () => {
   const dispatch = useDispatch();
-  let food = "";
+  const [food, setFood] = useState();
 
   const getBeerFromFood = async () => {
+    // Clear Store
+    dispatch({ type: "CLEAR", payload: [] });
+
     await axios
       .get(`https://api.punkapi.com/v2/beers?food=${food}`)
       .then((response) => {
+        // Send Data from API to store
         const beers = response.data;
-
         beers.forEach((beer) => {
           dispatch({ type: "ADD", payload: beer });
         });
@@ -21,7 +25,7 @@ const Search = () => {
   };
 
   const getInput = (e) => {
-    food = e.target.value;
+    setFood(e.target.value);
   };
 
   return (
